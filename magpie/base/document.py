@@ -4,6 +4,7 @@ import io
 import os
 import nltk
 import string
+import codecs
 
 from nltk.tokenize import WordPunctTokenizer, sent_tokenize, word_tokenize
 
@@ -25,7 +26,7 @@ class Document(object):
             self.filepath = filepath
             self.filename = os.path.basename(filepath)
 
-            with io.open(filepath, 'r') as f:
+            with codecs.open(filepath, "r", "utf-8") as f:
                 self.text = f.read()
 
         self.wordset = self.compute_wordset()
